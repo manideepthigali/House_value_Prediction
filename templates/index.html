@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House-Prediction</title>
+</head>
+<body>
+    <h1 style="color:rgb(164, 41, 41);text-align: center;">
+        House price prediction
+    </h1>
+    <div style="text-align: center;">
+        <form method="POST">
+            <label>Bed rooms:</label><br>
+            <input type="range" name="bedrooms" min="1" max="10" step="1" required/><br>
+            <label>Bathrooms:</label><br>
+            <input type="range" name="bathrooms" min="1" max="10" step="1" required/><br><br>
+            <label>Sqft:</label><br>
+            <input type="range" name="Sqft" min="500" max="10000" required/><br><br>
+
+            <label>Location</label><br>
+            <select name="Location">
+                {% for i in location_mapping %}
+                <option value="{{location_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br>
+
+            <label>Direction</label><br>
+            <select name="Direction">
+                {% for i in direction_mapping %}
+                <option value="{{direction_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br>
+
+            <label>Status</label><br>
+            <select name="Status">
+                {% for i in status_mapping %}
+                <option value="{{status_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br>
+
+            <label>Property-Type</label><br>
+            <select name="Property_type">
+                {% for i in property_type_mapping %}
+                <option value="{{property_type_mapping[i]}}">{{i}}</option>
+                {% endfor %}
+            </select><br><br>
+
+            <button>Submit</button>
+        </form>
+        <br><br>
+        {%if prediction is defined %}
+        <div>
+            <label>prediction: {{prediction}}</label>
+        </div>
+        {%endif%}
+
+    </div>
+</body>
+</html>
